@@ -14,7 +14,7 @@
             
                     {{-- Side Navigation Menu Item --}}
                     @component('components.side-navigation-menu-item')
-                        @slot('name') Эхлэл @endslot
+                        @slot('name') Самбар @endslot
                         @slot('icon') fas fa-tachometer-alt @endslot
                         @slot('route_name') {{route("admin.dashboard")}} @endslot
                     @endcomponent
@@ -37,14 +37,14 @@
                         @endcomponent
                     @endcan
 
-                    {{-- Side Navigation Menu Item --}}
+                    <!-- {{-- Side Navigation Menu Item --}}
                     @can('see-baskets')
                         @component('components.side-navigation-menu-item')
                         @slot('name') Сагс @endslot
                         @slot('icon') fas fa-shopping-basket @endslot
                         @slot('route_name') {{route("baskets")}} @endslot
                         @endcomponent
-                    @endcan
+                    @endcan -->
 
                     {{-- Side Navigation Menu Item --}}
                     @can('anything-employees')
@@ -110,10 +110,6 @@
                     </div>
                     @endcan
                 @endsection
-            @endcomponent
-
-            {{-- Side Navigation Footer --}}
-            @component('components.side-navigation-footer')
             @endcomponent
         </nav>
     </div>

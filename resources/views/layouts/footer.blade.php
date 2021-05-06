@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                Copyright &copy; Онлайн худалдааны вебсайт 2020
+                Copyright &copy; {{ Carbon\Carbon::now()->year }} Grocery Shop 
             </div>
         </div>
     </div>

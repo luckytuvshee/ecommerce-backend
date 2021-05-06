@@ -15,7 +15,8 @@ use App\DataTables\ReportDataTable;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return \Redirect::route('admin.dashboard');
 });
 
 Auth::routes();

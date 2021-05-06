@@ -121,8 +121,8 @@ $(document).ready(function() {
         oPaginate: {
             sFirst: "Эхнийх",
             sLast: "Сүүлийнх",
-            sNext: "Өмнөх",
-            sPrevious: "Дараах"
+            sNext: "Дараах",
+            sPrevious: "Өмнөх"
         },
         oAria: {
             sSortAscending: ": цагаан толгойн дарааллаар эрэмбэлэх",

@@ -2,8 +2,8 @@
 
 @section('side-navigation-content-header')
     @component('components.side-navigation-content')
-    @slot('title') Эхлэл @endslot
-    @slot('breadcrumb') Эхлэл @endslot
+    @slot('title') Самбар @endslot
+    @slot('breadcrumb') Самбар @endslot
     @section('side-navigation-content')
         @if (in_array(Auth::user()->type->id, [1, 2]))
           @include('components.dashboard-icons')

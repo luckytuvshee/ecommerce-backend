@@ -37202,8 +37202,8 @@ $(document).ready(function () {
     oPaginate: {
       sFirst: "Эхнийх",
       sLast: "Сүүлийнх",
-      sNext: "Өмнөх",
-      sPrevious: "Дараах"
+      sNext: "Дараах",
+      sPrevious: "Өмнөх"
     },
     oAria: {
       sSortAscending: ": цагаан толгойн дарааллаар эрэмбэлэх",
@@ -37646,8 +37646,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\online-shopping\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\online-shopping\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/luckytuvshee/Code/ecommerce/ecommerce-backend/src/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/luckytuvshee/Code/ecommerce/ecommerce-backend/src/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
