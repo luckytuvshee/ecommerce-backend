@@ -8,26 +8,11 @@
         <div class="row">
             <div class="col-xl-5 col-md-8">
                 @foreach ($basketItems as $item)
-                    <h3>{{ $item->product_registration->product->product_name }}</h3>
-
-                    <div class="form-group">
-                        <label class="mb-2" for="name">Хэмжээ</label>
-                        <input disabled class="form-control py-4" value="{{ $item->product_registration->size->size }}"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="mb-2" for="name">Өнгө</label>
-                        <input disabled class="form-control py-4" value="{{ $item->product_registration->color->color }}"/>
-                    </div>
+                    <h3>Барааны код: {{ $item->product_id }}</h3>
 
                     <div class="form-group">
                         <label class="mb-2" for="name">Тоо ширхэг</label>
                         <input disabled class="form-control py-4" value="{{ $item->quantity }}"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="mb-2" for="name">Зураг</label>
-                        <img class="d-block w-100 img-thumbnail" src="{{ url($item->product_registration->color_image) }}" alt="product_registration_image">
                     </div>
 
                     <hr />

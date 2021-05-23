@@ -50,10 +50,6 @@ class ShipmentController extends Controller
                         } 
                         return "Захиалга бэлтгэгдээгүй";
                     })
-                    ->editColumn('clerk_id', function($row) {
-                        $email = Employee::findOrFail($row->clerk_id)->email;
-                        return $email;
-                    })
                     ->editColumn('created_at', function($row) {
                         return $row->created_at->format('Y.m.d H:i:s');
                     })

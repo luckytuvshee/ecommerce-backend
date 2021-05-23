@@ -17,16 +17,6 @@ class EmployeeTypesTableSeeder extends Seeder
         ]);
 
         App\EmployeeType::create([
-            'name' => 'Системийн зохицуулагч',
-            'description' => 'Системийн үйл ажиллагааг хянана'
-        ]);
-
-        App\EmployeeType::create([
-            'name' => 'Бүртгэлийн ажилтан',
-            'description' => 'Бараа бүргэж, захиалгийн барааг бэлтгэж хүргэлтийн ажилтанд өгнө'
-        ]);
-
-        App\EmployeeType::create([
             'name' => 'Хүргэлтийн ажилтан',
             'description' => 'Захиалсан барааг хүргэнэ'
         ]);

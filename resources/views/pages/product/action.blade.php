@@ -6,11 +6,8 @@
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
-		<a class="dropdown-item" href="{{ route('product.edit', ['id' => $row->id]) }}">Засах</a>
+		<a class="dropdown-item" href="{{ route('product.edit', ['id' => $row->id]) }}">Засах</a>        
 		<div class="dropdown-divider"></div>
-
-		<a class="dropdown-item" href="{{ route('product.registration.create', ['id' => $row->id]) }}">Бараа бүртгэх</a>
-		<div class="dropdown-divider"></div>		
         <button type="button" class="dropdown-item" data-productid={{ $row->id }} data-toggle="modal" data-target="#product_delete_modal">
             <strong>Устгах</strong>
         </button>

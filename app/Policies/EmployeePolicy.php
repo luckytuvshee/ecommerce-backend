@@ -23,7 +23,7 @@ class EmployeePolicy
     // products
     public function see_product()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2, 3]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;
@@ -31,7 +31,7 @@ class EmployeePolicy
 
     public function edit_product()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2, 3]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;
@@ -40,7 +40,7 @@ class EmployeePolicy
     // users
     public function see_users()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;
@@ -57,7 +57,7 @@ class EmployeePolicy
     // baskets
     public function see_baskets()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;
@@ -75,7 +75,7 @@ class EmployeePolicy
     // shipments
     public function anything_shipments()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2, 3, 4]))
+        if(in_array(Auth::user()->employee_type_id, [1, 2]))
             return true;
         else 
             return false;
@@ -84,7 +84,7 @@ class EmployeePolicy
     // address
     public function anything_address()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;
@@ -93,7 +93,7 @@ class EmployeePolicy
     // report
     public function see_reports()
     {
-        if(in_array(Auth::user()->employee_type_id, [1, 2]))
+        if(in_array(Auth::user()->employee_type_id, [1]))
             return true;
         else 
             return false;

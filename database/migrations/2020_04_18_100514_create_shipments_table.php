@@ -15,8 +15,6 @@ class CreateShipmentsTable extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('clerk_id')->unsigned();
-            $table->foreign('clerk_id')->references('id')->on('employees')->onUpdate('cascade');
             $table->integer('shipper_id')->nullable()->unsigned();
             $table->foreign('shipper_id')->nullable()->references('id')->on('employees')->onUpdate('cascade');
             $table->integer('order_id')->unsigned();

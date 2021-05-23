@@ -304,7 +304,6 @@ $(document).ready(function() {
             { data: "order_status", name: "order_status" },
             { data: "id", name: "id" },
             { data: "order_id", name: "order_id" },
-            { data: "clerk_id", name: "clerk_id" },
             { data: "shipper_id", name: "shipper_id" },
             { data: "created_at", name: "created_at" },
             { data: "updated_at", name: "updated_at" }

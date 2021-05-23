@@ -83,27 +83,15 @@ class OrderController extends Controller
             return redirect()->route('orders');
         }
 
-        $employees = Employee::where('employee_type_id', '=', 3)->get();
+        $order->order_status_id = 2;
+        $order->save();
 
-        $basketItems = BasketItem::where('basket_id', '=', $order->basket_id)->get();
-
-        return view('pages.order.assign')->with(['employees' => $employees, 
-                                                     'order' => $order,
-                                               'basketItems' => $basketItems
-                                                ]);
-
+        return redirect()->route('orders')->with('success',  '#' . $id . ' захиалга амжилттай баталгаажлаа');
     }
 
     public function package($id) 
     {
         $order = Order::findOrFail($id);
-
-        $clerkOrders = Shipment::where('clerk_id', '=', Auth()->user()->id)->where('order_id', '=', $id)->get();
-
-        // if this order is not assigned for this clerk. 
-        if(!$clerkOrders->count()) {
-            return redirect()->route('orders');
-        }
 
         // if this order has already assigned for someone (clerk) or hasn't confirmed
         if($order->order_status_id != 2) {
@@ -120,7 +108,7 @@ class OrderController extends Controller
                                   ])
                                  ->join('shipments', 'employees.id', 'shipments.shipper_id')
                                  ->join('orders', 'shipments.order_id', 'orders.id')
-                                 ->where('employee_type_id', '=', 4)
+                                 ->where('employee_type_id', '=', 2)
                                  ->whereIn('order_status_id', [3, 4])
                                  ->groupBy('employees.id')
                                  ->get()
@@ -134,7 +122,7 @@ class OrderController extends Controller
                                   ])
                                  ->leftJoin('shipments', 'employees.id', 'shipments.shipper_id')
                                  ->leftJoin('orders', 'shipments.order_id', 'orders.id')
-                                 ->where('employee_type_id', '=', 4)
+                                 ->where('employee_type_id', '=', 2)
                                  ->where('shipments.id', '=', NULL)
                                  ->get()
                                  ->toArray();
@@ -147,7 +135,7 @@ class OrderController extends Controller
                                 ])
                                 ->join('shipments', 'employees.id', 'shipments.shipper_id')
                                 ->join('orders', 'shipments.order_id', 'orders.id')
-                                ->where('employee_type_id', '=', 4)
+                                ->where('employee_type_id', '=', 2)
                                 ->whereIn('order_status_id', [5])
                                 ->get()
                                 ->toArray();
@@ -155,47 +143,6 @@ class OrderController extends Controller
         $shippers = array_merge($shipping_shippers, $new_shippers, $free_shippers);
 
         return view('pages.order.package')->with(['shippers' => $shippers, 'basketItems' => $basketItems, 'order' => $order]);
-    }
-
-    public function assign_order(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'employee' => 'required',
-        ], [
-            'employee.required' => 'Хуваарилах ажилтан сонгогдоогүй байна'
-        ]);
-
-        if($validator->fails())
-        {
-            return redirect()->back()
-                             ->withErrors($validator->errors()->all());
-        }
-
-        $order = Order::findOrFail($id);
-
-        if(Auth()->user()->type->id > 2)
-        {
-            $clerkOrders = Shipment::where('clerk_id', '=', Auth()->user()->id)->where('order_id', '=', $id)->get();
-            // if this order is not assigned for this clerk. 
-            if(!$clerkOrders->count()) {
-                return redirect()->route('orders');
-            }
-
-            // if this order has already assigned for someone (clerk) or hasn't confirmed
-            if($order->order_status_id != 2) {
-                return redirect()->route('orders');
-            }
-        }
-
-        $order->order_status_id = 2;
-        $order->save();
-
-        $shipment = new Shipment;
-        $shipment->clerk_id = explode('.', $request->employee)[0];
-        $shipment->order_id = $id;
-        $shipment->save();
-
-        return redirect()->route('orders')->with('success',  '#' . $id . ' захиалга амжилттай баталгаажиж, хуваарилагдлаа');
     }
 
     public function package_order(Request $request, $id)
@@ -214,14 +161,6 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($id);
 
-        $clerkOrders = Shipment::where('clerk_id', '=', Auth()->user()->id)->where('order_id', '=', $id)->get();
-
-        // if this order is not assigned for this clerk. 
-        if(!$clerkOrders->count()) {
-            return redirect()->route('orders');
-        }
-
-        // if this order has already assigned for someone (clerk) or hasn't confirmed
         if($order->order_status_id != 2) {
             return redirect()->route('orders');
         }
@@ -229,8 +168,9 @@ class OrderController extends Controller
         $order->order_status_id = 3;
         $order->save();
 
-        $shipment = Shipment::where('order_id', '=', $order->id)->get()[0];
+        $shipment = new Shipment;
         $shipment->shipper_id = explode('.', $request->employee)[0];
+        $shipment->order_id = $id;
         $shipment->save();
 
         return redirect()->route('orders')->with('success',  '#' . $id . ' захиалга амжилттай бэлтгэгдэж, хүргэлтийн ажилтанд хуваариладсан');

@@ -109,6 +109,7 @@ class OrderController extends Controller
                                     'product_name',
                                     'products.id as product_id',
                                     'price',
+                                    'image',
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
                                 ->join('products', 'products.id', '=', 'basket_items.product_id')
@@ -172,6 +173,7 @@ class OrderController extends Controller
                                     'product_name',
                                     'products.id as product_id',
                                     'price',
+                                    'image',
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
                                 ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')

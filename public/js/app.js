@@ -37458,9 +37458,6 @@ $(document).ready(function () {
       data: "order_id",
       name: "order_id"
     }, {
-      data: "clerk_id",
-      name: "clerk_id"
-    }, {
       data: "shipper_id",
       name: "shipper_id"
     }, {
