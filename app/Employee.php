@@ -18,9 +18,9 @@ class Employee extends Authenticatable
         return $this->hasOne('App\EmployeeType', 'id', 'employee_type_id');
     }
 
-    public function product_registration()
+    public function product()
     {        
-        return $this->belongsTo('App\ProductRegistration');
+        return $this->belongsTo('App\Product');
     }
     /**
      * The attributes that are mass assignable.

@@ -17,8 +17,8 @@ class CreateBasketItemsTable extends Migration
             $table->increments('id');
             $table->integer('basket_id')->unsigned();
             $table->foreign('basket_id')->references('id')->on('baskets')->onUpdate('cascade');
-            $table->integer('product_registration_id')->unsigned();
-            $table->foreign('product_registration_id')->references('id')->on('product_registrations')->onUpdate('cascade');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade');
             $table->integer('quantity');
             $table->timestamps();
         });

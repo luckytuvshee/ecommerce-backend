@@ -18,7 +18,7 @@
           <div style="font-size: 28px; font-family: Iosevka; margin-top: 10px">{{ $product_count }}</div>
         </div>
         <div style="font-weight: 500" class="card-footer d-flex align-items-center justify-content-center">
-            <a class="small text-white stretched-link" href="{{ route('product.registration') }}">Нийт бүтээгдэхүүн</a>
+            <a class="small text-white stretched-link" href="{{ route('products') }}">Нийт бүтээгдэхүүн</a>
             <div class="small text-white"><i class="fas fa-angle-right ml-2 mt-1"></i></div>
         </div>
     </div>

@@ -88,14 +88,6 @@ class EmployeeController extends Controller
         $employee->employee_type_id = explode('.', $request->type)[0];
         $employee->mobile_number = $request->mobile_number;
 
-        if($request->image) {
-            $profile_image = $request->image->getClientOriginalName();
-            $request->image->move(public_path().'/images/employee/', $profile_image);
-            $employee->profile_image = '/images/employee/' . $profile_image;
-        } else {
-            $employee->profile_image = '/images/employee/default_profile_image.png';
-        }
-
         $employee->password = Hash::make($request->password);
 
         if($employee->save())
@@ -174,9 +166,6 @@ class EmployeeController extends Controller
         $employee->mobile_number = $request->mobile_number;
         $employee->employee_type_id = explode('.', $request->type)[0];
 
-        if($request->profile_image)
-            $employee->profile_image = '/images/employee/' . $request->profile_image->getClientOriginalName();
-
         if(trim($request->password) != "")
             $employee->password = Hash::make($request->password);
 
@@ -239,13 +228,6 @@ class EmployeeController extends Controller
         $employee->last_name = $request->last_name;
         $employee->email = $request->email;
         $employee->mobile_number = $request->mobile_number;
-
-        if($request->profile_image)
-        {
-            $image = $request->profile_image->getClientOriginalName();
-            $employee->profile_image = '/images/employee/' . $image;
-            $request->profile_image->move(public_path().'/images/employee/', $image);
-        }
 
         if(trim($request->password) != "")
             $employee->password = Hash::make($request->password);

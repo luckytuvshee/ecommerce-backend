@@ -42,25 +42,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class="mb-1" for="brand">Барааны брэнд</label>
-                        <select class="form-control" name="brand" id="brand">
-                            <option disabled selected>Барааны брэнд сонгох</option>
-                            @foreach ($product_brands as $item)
-                                @if (old('brand') == $item->id . '. ' . $item->brand_name)
-                                    <option selected>{{$item->id . '. ' . $item->brand_name}}</option>
-                                @else
-                                    <option>{{$item->id . '. ' . $item->brand_name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
-
-                        @error('brand')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label class="mb-1" for="type">Барааны төрөл</label>
                         <select class="form-control" name="type" id="type">
                             <option disabled selected>Барааны төрөл сонгох</option>
@@ -118,9 +99,20 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label class="mb-1" for="quantity">Тоо ширхэг</label>
+                        <input class="form-control py-1 @error('quantity') is-invalid @enderror" id="quantity" type="number" 
+                        value="{{ old('quantity') }}" multiple name="quantity" required autocomplete="quantity" />
+
+                        @error('quantity')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-primary btn-md">
                             Бараа нэмэх
                         </button>
                     </div>

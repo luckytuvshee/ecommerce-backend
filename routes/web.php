@@ -58,7 +58,6 @@ Route::group(['prefix' => 'dashboard'], function() {
     });
 
     Route::group(['prefix' => 'product-registration', 'middleware' => 'can:see-product'], function() {
-        Route::post('/fetch', 'ProductRegistrationController@fetch')->name('product.registration.fetch');
         Route::get('/', 'ProductRegistrationController@index')->name('product.registration');
         Route::post('/', 'ProductRegistrationController@store')->name('product.registration.store');
         Route::get('/{id}', 'ProductRegistrationController@show')->name('product.registration.show');

@@ -32,17 +32,6 @@
                     <input disabled class="form-control py-4" value="{{ $employee->type->name }}"/>
                 </div>
             </div>
-            
-            <div class="col-xl-5 col-md-8">
-                <div class="form-group">
-                    <label class="mb-2" for="name">Зураг</label>
-                    <div class="row">
-                        <div class="col-xl-6 col-md-6 col-sm-6">
-                            <img class="img-thumbnail" src="{{ url($employee->profile_image) }}" alt="product-image">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     @endsection
     @endcomponent

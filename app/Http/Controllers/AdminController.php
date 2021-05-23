@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Product;
 use App\Order;
-use App\ProductRegistration;
 use App\User;
 use App\Shipment;
 use App\Employee;
@@ -36,7 +35,7 @@ class AdminController extends Controller
         if(in_array(Auth()->user()->type->id, [1, 2]))
         {
             $order_count = Order::all()->count();
-            $product_count = ProductRegistration::all()->count();
+            $product_count = Product::all()->count();
             $user_count = User::where('id', '<>', 1)->get()->count(); // exclude default guest user which has id of 1
             $employee_count = Employee::all()->count();
 

@@ -12,69 +12,69 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         App\Product::create([
-            'product_name' => 'light blue dress',
-            'product_brand_id' => 3,
-            'product_type_id' => 10,
-            'image' => '/images/product/dress1_front.jpg',
-            'images' => '/images/product/dress_1_1.jpg\/images/product/dress_1_2.jpg\/images/product/dress_1_3.jpg\/images/product/dress_1_4.jpg',
-            'description' => 'Тааламжтай хаврын өдрүүдэд өмсхөд тохиромжтой даашинз',
-            'price' => 190000,
-            'views' => 346,
-        ]);
-
-        App\Product::create([
-            'product_name' => 'gorgeous booties',
-            'product_brand_id' => 4,
-            'product_type_id' => 7,
-            'image' => '/images/product/shoe1_front.jpg',
-            'images' => '/images/product/shoe1_1.jpg\/images/product/shoe1_2.jpg\/images/product/shoe1_3.jpg',
-            'description' => 'Өрнөдийн загвартай энэхүү гутал нь намарын улиралд заавал өмсөх гуталын нэг юм',
-            'price' => 280000,
-            'views' => 800,
-        ]);
-
-        App\Product::create([
-            'product_name' => 'Пүүз 1',
-            'product_brand_id' => 3,
-            'product_type_id' => 7,
-            'image' => '/images/product/sneaker1_front.jpg',
-            'images' => '/images/product/sneaker1_1.jpg\/images/product/sneaker1_3.jpg\/images/product/sneaker1_4.jpg\/images/product/sneker1_2.jpg',
-            'description' => 'Эдгээр гутал нь ямар ч гадуур хувцастай зохицдог, гоёмсог сонголт юм',
-            'price' => 120000,
-            'views' => 1546,
-        ]);
-
-        App\Product::create([
-            'product_name' => 'Цамц 1',
-            'product_brand_id' => 1,
+            'product_name' => 'Алим улаан Белги 1кг',
             'product_type_id' => 1,
-            'image' => '/images/product/pullover1_front.jpg',
-            'images' => '/images/product/pullover1_1.jpg\/images/product/pullover1_2.jpg\/images/product/pullover1_3.jpg\/images/product/pullover1_4.jpg\/images/product/pullover1_5.jpg\/images/product/pullover1_6.jpg\/images/product/pullover1_7.jpg\/images/product/pullover1_8.jpg\/images/product/pullover1_9.jpg\/images/product/pullover1_10.jpg\/images/product/pullover1_11.jpg',
-            'description' => 'Энэхүү гайхамшигтай тохь тухтай, том цамц нь налгар намрын өдрүүдэд зориулагдсан',
-            'price' => 165000,
+            'image' => '/images/product/apple_red_belgium_front.jpg',
+            'images' => '/images/product/apple_red_belgium_1.jpg\/images/product/apple_red_belgium_1.jpg',
+            'description' => '',
+            'price' => 10940,
+            'views' => 346,
+            'quantity' => 100,
+        ]);
+
+        App\Product::create([
+            'product_name' => 'Ногоон алим америк 1кг',
+            'product_type_id' => 1,
+            'image' => '/images/product/apple_green_america_front.png',
+            'images' => '/images/product/apple_green_america_1.png\/images/product/apple_green_america_2.png',
+            'description' => '',
+            'price' => 16000,
+            'views' => 800,
+            'quantity' => 200,
+        ]);
+
+        App\Product::create([
+            'product_name' => 'Pink lady Улаан алим 1кг',
+            'product_type_id' => 1,
+            'image' => '/images/product/pink_lady_apple_red_front.jpg',
+            'images' => '/images/product/pink_lady_apple_red_1.jpg\/images/product/pink_lady_apple_red_1.jpg',
+            'description' => '',
+            'price' => 10700,
+            'views' => 1546,
+            'quantity' => 1000,
+        ]);
+
+        App\Product::create([
+            'product_name' => 'Холимог самар 1кг',
+            'product_type_id' => 2,
+            'image' => '/images/product/mixed_nuts_1_front.jpg',
+            'images' => '/images/product/mixed_nuts_1_1.jpg\/images/product/mixed_nuts_1_2.jpg',
+            'description' => '',
+            'price' => 42000,
             'views' => 160,
+            'quantity' => 500,
         ]);
 
         App\Product::create([
-            'product_name' => 'Cecico брэндийн Жинсэн Хүрэм',
-            'product_brand_id' => 3,
-            'product_type_id' => 9,
-            'image' => '/images/product/denim_jacket1_front.jpg',
-            'images' => '/images/product/denim_jacket1_1.jpg\/images/product/denim_jacket1_2.jpg\/images/product/denim_jacket1_3.jpg\/images/product/denim_jacket1_4.jpg\/images/product/denim_jacket1_5.jpg\/images/product/denim_jacket1_6.jpg',
-            'description' => 'Жинсэн хүрэмийг авсанаар та хэзээ ч буруудахгүй бөгөөд энэ нь хаврын улирлын төгс төгөлдөр сонголт юм',
-            'price' => 180000,
+            'product_name' => 'Цангис 1кг',
+            'product_type_id' => 2,
+            'image' => '/images/product/tsangis_front.png',
+            'images' => '/images/product/tsangis_1.png\/images/product/tsangis_2.png',
+            'description' => '',
+            'price' => 35000,
             'views' => 640,
+            'quantity' => 400,
         ]);
 
         App\Product::create([
-            'product_name' => 'Emma Rose брэндийн Цагаан жинсэн хүрэм',
-            'product_brand_id' => 4,
-            'product_type_id' => 9,
-            'image' => '/images/product/denim_jacket2_front.jpg',
-            'images' => '/images/product/denim_jacket2_1.jpg\/images/product/denim_jacket2_2.jpg\/images/product/denim_jacket2_3.jpg\/images/product/denim_jacket2_4.jpg\/images/product/denim_jacket2_5.jpg\/images/product/denim_jacket2_6.jpg',
-            'description' => 'Жинсэн хүрэмийг авсанаар та хэзээ ч буруудахгүй бөгөөд энэ нь хаврын улирлын төгс төгөлдөр сонголт юм',
-            'price' => 165000,
+            'product_name' => 'Холимог самар 300гр',
+            'product_type_id' => 2,
+            'image' => '/images/product/mixed_nuts_2_front.jpg',
+            'images' => '/images/product/mixed_nuts_2_1.jpg\/images/product/mixed_nuts_2_2.jpg',
+            'description' => '',
+            'price' => 12600,
             'views' => 400,
+            'quantity' => 900,
         ]);
     }
 }

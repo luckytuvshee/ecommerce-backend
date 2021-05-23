@@ -8,7 +8,7 @@ use App\Order;
 use App\BasketItem;
 use App\Basket;
 use App\Payment;
-use App\ProductRegistration;
+use App\Product;
 
 class OrderController extends Controller
 {
@@ -39,25 +39,20 @@ class OrderController extends Controller
         // ->join('subdistricts', 'subdistricts.id', '=', 'addresses.subdistrict_id')
         ->get();
 
+
         $orders->transform(function ($item, $key) {
             $basket_items = BasketItem::select([
-                'product_registration_id',
                 'basket_items.quantity',
                 'product_name',
                 'products.id as product_id',
                 'price',
-                'color',
-                'color_image',
-                'size'
+                'image'
             ])
             ->where('basket_id', '=', $item->basket_id)
-            ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')
-            ->join('products', 'products.id', '=', 'product_registrations.product_id')
-            ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-            ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
+            ->join('products', 'products.id', '=', 'basket_items.product_id')
             ->get();
 
-            $item->setAttribute('product_registrations', $basket_items);
+            $item->setAttribute('products', $basket_items);
 
             return $item;
         });
@@ -67,8 +62,8 @@ class OrderController extends Controller
 
     public function instant_store(Request $request)
     {
-        $product_registration = ProductRegistration::findOrFail($request->product_registration_id);
-        $price = $product_registration->product->price;
+        $product = Product::findOrFail($request->product_id);
+        $price = $product->price;
 
         $newBasket = new Basket;
         $newBasket->user_id = $request->user_id;
@@ -76,12 +71,12 @@ class OrderController extends Controller
         $newBasket->save();
 
         // update warehouse quantity
-        $product_registration->quantity = $product_registration->quantity - $request->quantity;
-        $product_registration->save();
+        $product->quantity = $product->quantity - $request->quantity;
+        $product->save();
 
         $newBasketItem = new BasketItem;
         $newBasketItem->basket_id = $newBasket->id;
-        $newBasketItem->product_registration_id = $request->product_registration_id;
+        $newBasketItem->product_id = $request->product_id;
         $newBasketItem->quantity = $request->quantity;
         $newBasketItem->save();
 
@@ -110,23 +105,16 @@ class OrderController extends Controller
         ->first();
 
         $basket_items = BasketItem::select([
-                                    'product_registration_id',
                                     'basket_items.quantity',
                                     'product_name',
                                     'products.id as product_id',
                                     'price',
-                                    'color',
-                                    'color_image',
-                                    'size'
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
-                                ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')
-                                ->join('products', 'products.id', '=', 'product_registrations.product_id')
-                                ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-                                ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
+                                ->join('products', 'products.id', '=', 'basket_items.product_id')
                                 ->get();
 
-        $order->setAttribute('product_registrations', $basket_items);
+        $order->setAttribute('products', $basket_items);
 
         return $order;
     }
@@ -184,15 +172,10 @@ class OrderController extends Controller
                                     'product_name',
                                     'products.id as product_id',
                                     'price',
-                                    'color',
-                                    'color_image',
-                                    'size'
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
                                 ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')
                                 ->join('products', 'products.id', '=', 'product_registrations.product_id')
-                                ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-                                ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
                                 ->get();
 
         $order->setAttribute('product_registrations', $basket_items);
@@ -223,9 +206,9 @@ class OrderController extends Controller
         // update warehouse quantity
         $basketItems = BasketItem::where('basket_id', '=', $request->basket_id)->get();
         foreach ($basketItems as $item) {
-            $product_registration = ProductRegistration::findOrFail($item->product_registration_id);
-            $product_registration->quantity = $product_registration->quantity - $item->quantity;
-            $product_registration->save();
+            $product = Product::findOrFail($item->product_id);
+            $product->quantity = $product->quantity - $item->quantity;
+            $product->save();
         }
 
         $order = Order::select([
@@ -246,23 +229,17 @@ class OrderController extends Controller
         ->first();
 
         $basket_items = BasketItem::select([
-                                    'product_registration_id',
                                     'basket_items.quantity',
                                     'product_name',
                                     'products.id as product_id',
                                     'price',
-                                    'color',
-                                    'color_image',
-                                    'size'
+                                    'image'
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
-                                ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')
-                                ->join('products', 'products.id', '=', 'product_registrations.product_id')
-                                ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-                                ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
+                                ->join('products', 'products.id', '=', 'basket_items.product_id')
                                 ->get();
 
-        $order->setAttribute('product_registrations', $basket_items);
+        $order->setAttribute('products', $basket_items);
 
         return $order;
     }

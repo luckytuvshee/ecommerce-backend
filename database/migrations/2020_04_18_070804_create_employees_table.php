@@ -19,7 +19,6 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('email')->unique();
             $table->string('mobile_number')->nullable();
-            $table->string('profile_image')->nullable();
             $table->integer('employee_type_id')->unsigned();
             $table->foreign('employee_type_id')->references('id')->on('employee_types')->onUpdate('cascade');
             $table->timestamp('email_verified_at')->nullable();

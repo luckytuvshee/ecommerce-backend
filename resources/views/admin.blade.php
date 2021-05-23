@@ -28,15 +28,6 @@
                         @endcomponent
                     @endcan
 
-                    {{-- Side Navigation Menu Item --}}
-                    @can('see-product')
-                        @component('components.side-navigation-menu-item')
-                            @slot('name') Бараа бүртгэл @endslot
-                            @slot('icon') fas fa-columns @endslot
-                            @slot('route_name') {{route("product.registration")}} @endslot
-                        @endcomponent
-                    @endcan
-
                     <!-- {{-- Side Navigation Menu Item --}}
                     @can('see-baskets')
                         @component('components.side-navigation-menu-item')

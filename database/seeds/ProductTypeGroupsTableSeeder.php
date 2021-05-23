@@ -12,23 +12,23 @@ class ProductTypeGroupsTableSeeder extends Seeder
     public function run()
     {
         App\ProductTypeGroup::create([
-            'name' => 'Цамц',
+            'name' => 'Жимс, ногоо',
         ]);
 
         App\ProductTypeGroup::create([
-            'name' => 'Өмд',
+            'name' => 'Өдөр тутмын хүнс',
         ]);
 
         App\ProductTypeGroup::create([
-            'name' => 'Гутал',
+            'name' => 'Талх, нарийн боов',
         ]);
 
         App\ProductTypeGroup::create([
-            'name' => 'Гадуур хувцас',
+            'name' => 'Чихэр, шоколад',
         ]);
 
         App\ProductTypeGroup::create([
-            'name' => 'Дотуур хувцас',
+            'name' => 'Ус, ундаа, жүүс',
         ]);
     }
 }

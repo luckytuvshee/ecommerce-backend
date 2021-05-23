@@ -11,124 +11,89 @@ class ProductTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        // Цамц
+        // Жимс, ногоо
         App\ProductType::create([
             'type_group_id' => 1,
-            'type_name' => 'Нимгэн цамц',
+            'type_name' => 'Жимс',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 1,
-            'type_name' => 'Малгаатай цамц',
+            'type_name' => 'Хатаасан жимс',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 1,
-            'type_name' => 'Сорочка',
+            'type_name' => 'Хөлдөөсөн жимс',
         ]);
 
-        App\ProductType::create([
-            'type_group_id' => 1,
-            'type_name' => 'Малгаагүй цамц',
-        ]);
-
-        // Өмд
+        // Өдөр тутмын хүнс
         App\ProductType::create([
             'type_group_id' => 2,
-            'type_name' => 'Бариу өмд',
+            'type_name' => 'Сүү',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 2,
-            'type_name' => 'Сул өмд',
+            'type_name' => 'Тараг, аарц',
         ]);
         
         App\ProductType::create([
             'type_group_id' => 2,
-            'type_name' => 'Нимгэн сул өмд',
+            'type_name' => 'Өрөм, зөөхий, ааруул',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 2,
-            'type_name' => 'Жинсэн өмд',
+            'type_name' => 'Цөцгийн тос',
         ]);
 
-        App\ProductType::create([
-            'type_group_id' => 2,
-            'type_name' => 'Биеийн тамирын өмд',
-        ]);
-
-        // Гутал
+        // Талх, нарин боов
         App\ProductType::create([
             'type_group_id' => 3,
-            'type_name' => 'Пүүз',
+            'type_name' => 'Талх',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 3,
-            'type_name' => 'Кет',
+            'type_name' => 'Нарийн боов',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 3,
-            'type_name' => 'Углааш',
+            'type_name' => 'Кекс, бейкэри',
         ]);
 
-        App\ProductType::create([
-            'type_group_id' => 3,
-            'type_name' => 'Өсгийтэй гутал',
-        ]);
-
-        App\ProductType::create([
-            'type_group_id' => 3,
-            'type_name' => 'Таавчик',
-        ]);
-
-        App\ProductType::create([
-            'type_group_id' => 3,
-            'type_name' => 'Өвлийн гутал',
-        ]);
-
-        // Гадуур хувцас
+        // Чихэр, шоколад
         App\ProductType::create([
             'type_group_id' => 4,
-            'type_name' => 'Хүрэм',
+            'type_name' => 'Шоколад',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 4,
-            'type_name' => 'Цув',
+            'type_name' => 'Набор',
         ]);
 
-        App\ProductType::create([
-            'type_group_id' => 4,
-            'type_name' => 'Өвлийн куртка',
-        ]);
-
-        App\ProductType::create([
-            'type_group_id' => 4,
-            'type_name' => 'Платье',
-        ]);
-
-        App\ProductType::create([
-            'type_group_id' => 4,
-            'type_name' => 'Даашинз',
-        ]);
-
-        // Дотуур хувцас
+        // Ус, ундаа, жүүс
         App\ProductType::create([
             'type_group_id' => 5,
-            'type_name' => 'Левчик',
+            'type_name' => 'Ус',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 5,
-            'type_name' => 'Трусикс',
+            'type_name' => 'Ундаа',
         ]);
 
         App\ProductType::create([
             'type_group_id' => 5,
-            'type_name' => 'Унтлагын цамц',
+            'type_name' => 'Жүүс',
+        ]);
+        
+        App\ProductType::create([
+            'type_group_id' => 5,
+            'type_name' => 'Цай, кофе',
         ]);
     }
 }

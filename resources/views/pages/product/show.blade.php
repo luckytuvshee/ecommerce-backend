@@ -16,10 +16,6 @@
                     <input disabled class="form-control py-4" value="{{ $product->product_name }}"/>
                 </div>
                 <div class="form-group">
-                    <label class="mb-2" for="name">Брэнд</label>
-                    <input disabled class="form-control py-4" value="{{ $product->brand->brand_name }}"/>
-                </div>
-                <div class="form-group">
                     <label class="mb-2" for="name">Төрөл</label>
                     <input disabled class="form-control py-4" value="{{ $product->type->type_name }}"/>
                 </div>
@@ -32,7 +28,10 @@
                     <label class="mb-2" for="name">Үнэ ₮</label>
                     <input disabled class="form-control py-4" value="{{ $product->price }}"/>
                 </div>
-                
+                <div class="form-group">
+                    <label class="mb-2" for="name">Тоо ширхэг</label>
+                    <input disabled class="form-control py-4" value="{{ $product->quantity }}"/>
+                </div>
             </div>
             <div class="col-xl-5 col-md-8">
                 <div class="form-group">

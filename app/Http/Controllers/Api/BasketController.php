@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Basket;
 use App\BasketItem;
 use App\Order;
-use App\ProductRegistration;
 use Illuminate\Support\Facades\DB;
 
 class BasketController extends Controller
@@ -38,24 +37,11 @@ class BasketController extends Controller
 
     public function show($id)
     {
-        $product_registration = DB::table('product_registrations')
-                                    ->select(['product_registrations.id',
-                                            'product_name',
-                                            'products.id as product_id',
-                                            'color', 
-                                            'size', 
-                                            'quantity',
-                                            'color_image',
-                                            'price',
-                                            'size'
-                                    ])
-                                    ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-                                    ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
-                                    ->join('products', 'products.id', '=', 'product_registrations.product_id')
-                                    ->where('product_registrations.id', '=', $id)
+        $product = DB::table('products')
+                                    ->where('id', '=', $id)
                                     ->first();
 
-        return response()->json(['product_registration' => $product_registration]);
+        return response()->json(['product' => $product]);
 
     }
 
@@ -76,7 +62,7 @@ class BasketController extends Controller
             if($basket)
             {
                 $basketItem = BasketItem::where('basket_id', '=', $basket->id)
-                                        ->where('product_registration_id', '=', $request->product_registration_id)
+                                        ->where('product_id', '=', $request->product_id)
                                         ->first();
 
                 if($basketItem)
@@ -89,7 +75,7 @@ class BasketController extends Controller
                 {
                     $newBasketItem = new BasketItem;
                     $newBasketItem->basket_id = $basket->id;
-                    $newBasketItem->product_registration_id = $request->product_registration_id;
+                    $newBasketItem->product_id = $request->product_id;
                     $newBasketItem->quantity = $request->quantity;
                     $newBasketItem->save();
                     return response()->json(['basket' => $newBasketItem, 'updated' => 0]);
@@ -104,7 +90,7 @@ class BasketController extends Controller
 
                 $newBasketItem = new BasketItem;
                 $newBasketItem->basket_id = $newBasket->id;
-                $newBasketItem->product_registration_id = $request->product_registration_id;
+                $newBasketItem->product_id = $request->product_id;
                 $newBasketItem->quantity = $request->quantity;
                 $newBasketItem->save();
 

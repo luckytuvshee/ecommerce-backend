@@ -52,7 +52,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-primary btn-md">
                             Хэрэглэгчийн мэдээлэл өөрчлөх
                         </button>
                     </div>

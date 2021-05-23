@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\ProductBrand;
 use App\ProductType;
 use App\Product;
 use Illuminate\Support\Facades\Validator;
 use DataTables;
-use App\Size;
-use App\Color;
 
 class ProductController extends Controller
 {
@@ -34,9 +31,6 @@ class ProductController extends Controller
                     ->addColumn('action', function($row) {
                         return view('pages.product.action')->with('row', $row);
                     })
-                    ->editColumn('product_brand_id', function($row) {
-                        return $row->brand->brand_name;
-                    })
                     ->editColumn('product_type_id', function($row) {
                         return $row->type->type_name;
                     })
@@ -53,10 +47,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product_brands = ProductBrand::all();
         $product_types = ProductType::all();
 
-        return view('pages.product.create')->with(['product_brands' => $product_brands, 'product_types' => $product_types]);
+        return view('pages.product.create')->with(['product_types' => $product_types]);
     }
 
     /**
@@ -69,14 +62,13 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'brand' => 'required',
             'type' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
             'description' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric'
         ], [
-            'brand.required' => 'Барааны брэнд сонгоогүй байна',
             'type.required' => 'Барааны төрөл сонгоогүй байна',
             'image.image' => 'Нүүр зураг зураг биш байна',
             'image.mimes' => 'Нүүр зурагны төрөл jepg, png, jpg, svg байх биш байна',
@@ -108,12 +100,12 @@ class ProductController extends Controller
 
         $product = new Product;
         $product->product_name = $request->name;
-        $product->product_brand_id = explode('.', $request->brand)[0];
         $product->product_type_id = explode('.', $request->type)[0];
         $product->image =  '/images/product/' . $front_image_name;
         $product->images = $product_images_path;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->quantity = $request->quantity;
 
         if($product->save())
         {
@@ -147,12 +139,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $product_brands = ProductBrand::all();
         $product_types = ProductType::all();
 
         return view('pages.product.edit')
                     ->with(['product' => $product, 
-                            'product_brands' => $product_brands, 
                             'product_types' => $product_types]);
     }
 
@@ -167,14 +157,13 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'brand' => 'required',
             'type' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'images.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
             'description' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric'
         ], [
-            'brand.required' => 'Барааны брэнд сонгоогүй байна',
             'type.required' => 'Барааны төрөл сонгоогүй байна',
             'image.image' => 'Нүүр зураг зураг биш байна',
             'image.mimes' => 'Нүүр зурагны төрөл jepg, png, jpg, svg байх биш байна',
@@ -184,7 +173,7 @@ class ProductController extends Controller
         if($validator->fails())
         {
             return redirect()->back()
-                             ->withInput($request->only('name', 'description', 'price', 'brand', 'type'))
+                             ->withInput($request->only('name', 'description', 'price', 'quantity', 'type'))
                              ->withErrors($validator->errors()->all());
         }
 
@@ -216,10 +205,10 @@ class ProductController extends Controller
 
 
         $product->product_name = $request->name;
-        $product->product_brand_id = explode('.', $request->brand)[0];
         $product->product_type_id = explode('.', $request->type)[0];
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->quantity = $request->quantity;
 
         if($product->save())
         {

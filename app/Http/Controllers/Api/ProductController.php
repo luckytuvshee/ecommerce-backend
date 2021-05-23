@@ -6,9 +6,7 @@ use App\Http\Controllers\Api\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use App\ProductRegistration;
 use App\Product;
-use App\ProductBrand;
 use App\LikedProduct;
 use App\ProductTypeGroup;
 
@@ -65,11 +63,6 @@ class ProductController extends Controller
     public function product_types()
     {
         return ProductTypeGroup::with('type')->get();
-    }
-
-    public function product_brands()
-    {
-        return ProductBrand::all();
     }
 
     // Get Types Group
@@ -240,24 +233,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->increment('views');
-
-        $product_colors = DB::table('product_registrations')
-                        ->select(['product_registrations.id',
-                                  'color_id', 
-                                  'size_id', 
-                                  'quantity',
-                                  'color_image',
-                                  'size'
-                        ])
-                        ->join('colors', 'colors.id', '=', 'product_registrations.color_id')
-                        ->join('sizes', 'sizes.id', '=', 'product_registrations.size_id')
-                        ->where('product_id', '=', $id)
-                        ->join('products', 'products.id', '=', 'product_registrations.product_id')
-                        ->get()
-                        ->groupBy('color_id')
-                        ->values();
-
-        $product->setAttribute('colors', $product_colors);
         
         return response()->json(['product' => $product]);
     }

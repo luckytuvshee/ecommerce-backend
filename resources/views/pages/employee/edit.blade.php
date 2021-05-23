@@ -73,19 +73,9 @@
                                 @endif
                             @endforeach
                         </select>
-                    </div>
+                    </div>                   
                     <div class="form-group">
-                        <label class="mb-1" for="profile_image">
-                            Зураг
-                            @if (!strpos($employee->profile_image, "default_profile_image.png"))
-                                <strong>(сонгогдсон байна)</strong>
-                            @endif
-                        </label>
-                        <input class="form-control py-1 @error('profile_image') is-invalid @enderror" id="profile_image" type="file" 
-                        value="{{ $employee->profile_image }}"  name="profile_image" />
-                    </div>                    
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-primary btn-md">
                             Ажилтны мэдээлэл өөрчлөх
                         </button>
                     </div>

@@ -14,65 +14,59 @@ class EmployeesTableSeeder extends Seeder
     {
         // Super admin
         App\Employee::create([
-            'email' => 'superadmin@myshop.com',
-            'last_name' => 'John',
-            'first_name' => 'Doe',
+            'email' => 'superadmin@test.com',
+            'last_name' => 'Doe',
+            'first_name' => 'John',
             'mobile_number' => '99999999',
             'employee_type_id' => 1,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
 
         // System manager
         App\Employee::create([
-            'email' => 'betty@myshop.com',
-            'last_name' => 'Smith',
-            'first_name' => 'Betty',
+            'email' => 'joe@test.com',
+            'last_name' => 'Poe',
+            'first_name' => 'Joe',
             'mobile_number' => '88889999',
             'employee_type_id' => 2,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
 
         // Warehouse Clerk
         App\Employee::create([
-            'email' => 'maria@myshop.com',
-            'last_name' => 'Hernandez',
-            'first_name' => 'Maria',
+            'email' => 'jane@test.com',
+            'last_name' => 'Doe',
+            'first_name' => 'Jane',
             'mobile_number' => '89988888',
             'employee_type_id' => 3,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
 
         App\Employee::create([
-            'email' => 'ashley@myshop.com',
-            'last_name' => 'Rosa',
-            'first_name' => 'Ashley',
+            'email' => 'amy@test.com',
+            'last_name' => 'Winehouse',
+            'first_name' => 'Amy',
             'mobile_number' => '99990099',
             'employee_type_id' => 3,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
 
         // Shipper
         App\Employee::create([
-            'email' => 'scarlet@myshop.com',
-            'last_name' => 'Johansson',
-            'first_name' => 'Scarlet',
+            'email' => 'tom@test.com',
+            'last_name' => 'Hardy',
+            'first_name' => 'Tom',
             'mobile_number' => '88889900',
             'employee_type_id' => 4,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
 
         App\Employee::create([
-            'email' => 'cooper@myshop.com',
-            'last_name' => 'Bradley',
-            'first_name' => 'Cooper',
+            'email' => 'nancy@test.com',
+            'last_name' => 'Williams',
+            'first_name' => 'Nancy',
             'mobile_number' => '88889988',
             'employee_type_id' => 4,
-            'profile_image' => '/images/employee/default_profile_image.png',
             'password' => Hash::make('12121212')
         ]);
     }

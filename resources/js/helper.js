@@ -147,10 +147,10 @@ $(document).ready(function() {
                 }
             },
             { data: "product_name", name: "product_name" },
-            { data: "product_brand_id", name: "product_brand_id" },
             { data: "product_type_id", name: "product_type_id" },
             { data: "description", name: "description" },
             { data: "price", name: "price" },
+            { data: "quantity", name: "quantity" },
             {
                 data: "action",
                 name: "action",
@@ -174,13 +174,6 @@ $(document).ready(function() {
             { data: "mobile_number", name: "mobile_number" },
             { data: "employee_type_id", name: "employee_type_id" },
             {
-                data: "profile_image",
-                name: "profile_image",
-                render: function(data) {
-                    return '<img src="' + data + '" width=50 />';
-                }
-            },
-            {
                 data: "action",
                 name: "action",
                 orderable: false,
@@ -199,16 +192,7 @@ $(document).ready(function() {
             { data: "DT_RowIndex", name: "DT_RowIndex" },
             { data: "id", name: "id" },
             { data: "product_id", name: "product_id" },
-            { data: "color_id", name: "color_id" },
-            { data: "size_id", name: "size_id" },
             { data: "quantity", name: "quantity" },
-            {
-                data: "color_image",
-                name: "color_image",
-                render: function(data) {
-                    return '<img src="' + data + '" width=50 />';
-                }
-            },
             { data: "employee_id", name: "employee_id" },
             {
                 data: "action",
@@ -398,40 +382,5 @@ $(document).ready(function() {
             { data: "last_name", name: "last_name" },
             { data: "shipment_count", name: "shipment_count" }
         ]
-    });
-
-    // Dynamic select box
-    $(".product-color").change(function() {
-        if ($(this).val() != "") {
-            var select = $(this).attr("id");
-            var value = $(this).val();
-            var dependent = $(this).data("dependent");
-            var _token = $('input[name="_token"').val();
-            var product_id = $("#product_id").val();
-
-            $("#size")
-                .empty()
-                .append(
-                    '<option selected="selected" value="">Ачааллаж байна, түр хүлээнэ үү</option>'
-                );
-
-            console.log(_token);
-            $.ajax({
-                url: "/dashboard/product-registration/fetch",
-                method: "POST",
-                dataType: "text",
-                data: {
-                    select: select,
-                    value: value,
-                    _token: _token,
-                    dependent: dependent,
-                    product_id: product_id
-                },
-                success: function(result) {
-                    console.log(result);
-                    $("#" + dependent).html(result);
-                }
-            });
-        }
     });
 });

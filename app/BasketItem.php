@@ -11,8 +11,8 @@ class BasketItem extends Model
         return $this->belongsTo('App\Basket', 'id');
     }
 
-    public function product_registration()
+    public function product()
     {        
-        return $this->hasOne('App\ProductRegistration', 'id', 'product_registration_id');
+        return $this->hasOne('App\Product', 'id', 'product_id');
     }
 }

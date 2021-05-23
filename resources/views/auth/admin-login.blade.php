@@ -34,14 +34,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                                <label class="custom-control-label" for="remember">Нууц үг санах</label>
-                                            </div>
-                                        </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="{{ route('admin.password.request') }}">Нууц үгээ мартсан уу?</a>
+                                            <!-- <a class="small" href="{{ route('admin.password.request') }}">Нууц үгээ мартсан уу?</a> -->
 
                                             <button type="submit" class="btn btn-primary">
                                                 Нэвтрэх
