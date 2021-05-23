@@ -42,7 +42,7 @@ Route::post('/auth', [
 Route::get('/products', 'Api\ProductController@index')->name('products.index');
 Route::get('/products/most-purchased', 'Api\ProductController@most_purchased')->name('products.most_purchased');
 Route::get('/products/popular', 'Api\ProductController@popular')->name('products.popular');
-Route::get('/products/search', 'Api\ProductController@search')->name('products.search');
+Route::post('/products/search', 'Api\ProductController@search')->name('products.search');
 Route::get('/products/{id}', 'Api\ProductController@show')->name('products.show');
 Route::get('/products/like/{id}', 'Api\ProductController@similar')->name('products.similar');
 
