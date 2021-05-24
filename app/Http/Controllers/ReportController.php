@@ -53,7 +53,7 @@ class ReportController extends Controller
                                     'employees.first_name as first_name',
                                     'employees.last_name as last_name',
                                     'baskets.total as total',
-                                    DB::raw('COUNT(*) as shipment_count')
+                                    DB::raw('COUNT(IF(order_status_id = 3, NULL, 1)) as shipment_count')
                                 ])
                                 ->join('orders', 'shipments.order_id', 'orders.id')
                                 ->join('baskets', 'orders.basket_id', 'baskets.id')

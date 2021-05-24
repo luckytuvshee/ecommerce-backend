@@ -65,6 +65,15 @@ html {
     scrollbar-width: thin;
 }
 
+.dashboard-card {
+    transition: 0.2s all ease-in-out;
+}
+
+.dashboard-card:hover {
+    transition: 0.2s all ease-in-out;
+    background-color: #19212b !important;
+}
+
 article,
 aside,
 figcaption,

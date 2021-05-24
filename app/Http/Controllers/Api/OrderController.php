@@ -133,11 +133,11 @@ class OrderController extends Controller
             $newBasketItem->basket_id = $newBasket->id;
 
             // update warehouse quantity
-            $product_registration = ProductRegistration::findOrFail($item['product_registration_id']);
-            $product_registration->quantity = $product_registration->quantity - $item['quantity'];
-            $product_registration->save();
+            $product = Product::findOrFail($item['product_id']);
+            $product->quantity = $product->quantity - $item['quantity'];
+            $product->save();
 
-            $newBasketItem->product_registration_id = $product_registration->id;
+            $newBasketItem->product_id = $product->id;
             $newBasketItem->quantity = $item['quantity'];
             $newBasketItem->save();
         }
@@ -168,19 +168,17 @@ class OrderController extends Controller
         ->first();
 
         $basket_items = BasketItem::select([
-                                    'product_registration_id',
                                     'basket_items.quantity',
                                     'product_name',
-                                    'products.id as product_id',
+                                    'product_id',
                                     'price',
                                     'image',
                                 ])
                                 ->where('basket_id', '=', $newOrder->basket_id)
-                                ->join('product_registrations', 'product_registrations.id', '=', 'product_registration_id')
-                                ->join('products', 'products.id', '=', 'product_registrations.product_id')
+                                ->join('products', 'products.id', '=', 'basket_items.product_id')
                                 ->get();
 
-        $order->setAttribute('product_registrations', $basket_items);
+        $order->setAttribute('products', $basket_items);
 
         return $order;
     }

@@ -32,7 +32,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if(in_array(Auth()->user()->type->id, [1, 2]))
+        if(in_array(Auth()->user()->type->id, [1]))
         {
             $order_count = Order::all()->count();
             $product_count = Product::all()->count();
@@ -46,31 +46,7 @@ class AdminController extends Controller
                                             'employee_count' => $employee_count
                                         ]);
         }
-        else if(Auth()->user()->type->id == 3)
-        {
-            $received_order_count = Shipment::where('clerk_id', '=', Auth()->user()->id)
-                                            ->get()
-                                            ->count();
-
-            $packaged_order_count = Shipment::join('orders', 'shipments.order_id', 'orders.id')
-                                            ->where('clerk_id', '=', Auth()->user()->id)
-                                            ->where('orders.order_status_id', '>=',3)
-                                            ->get()
-                                            ->count();
-
-            $waiting_order_count = Shipment::join('orders', 'shipments.order_id', 'orders.id')
-                                            ->where('clerk_id', '=', Auth()->user()->id)
-                                            ->where('orders.order_status_id', '=', 2)
-                                            ->get()
-                                            ->count();
-
-            return view('dashboard')->with([
-                                                'received_order_count' => $received_order_count, 
-                                                'packaged_order_count' => $packaged_order_count,
-                                                'waiting_order_count' => $waiting_order_count,
-                                            ]);
-        }
-        else if(Auth()->user()->type->id == 4)
+        else if(Auth()->user()->type->id == 2)
         {
             $received_order_count = Shipment::where('shipper_id', '=', Auth()->user()->id)
                                             ->get()

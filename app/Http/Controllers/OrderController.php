@@ -28,12 +28,9 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {    
-            if(Auth()->user()->employee_type_id == 4)
+            if(Auth()->user()->employee_type_id == 2)
                 $data = Order::join('shipments', 'orders.id', 'shipments.order_id')
                                     ->where('shipper_id', '=', Auth()->user()->id)->get();
-            else if(Auth()->user()->employee_type_id == 3)
-                $data = Order::join('shipments', 'orders.id', 'shipments.order_id')
-                                    ->where('clerk_id', '=', Auth()->user()->id)->get();
             else
                 $data = Order::select([
                                 'id as order_id',

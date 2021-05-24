@@ -5,15 +5,11 @@
     @slot('title') Самбар @endslot
     @slot('breadcrumb') Самбар @endslot
     @section('side-navigation-content')
-        @if (in_array(Auth::user()->type->id, [1, 2]))
+        @if (in_array(Auth::user()->type->id, [1]))
           @include('components.dashboard-icons')
           @include('components.dashboard-graph')
-        @elseif (Auth::user()->type->id == 3)
-          @include('components.clerk-icons')
-          {{-- @include('components.clerk-graph') --}}
-        @elseif (Auth::user()->type->id == 4)
+        @elseif (Auth::user()->type->id == 2)
           @include('components.shipper-icons')
-          {{-- @include('components.shipper-graph') --}}
         @endif
     @endsection
     @endcomponent

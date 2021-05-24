@@ -23,13 +23,8 @@ class ShipmentController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {    
-            if(Auth()->user()->employee_type_id == 3)
-                $data = Shipment::join('orders', 'shipments.order_id', 'orders.id')
-                                        ->where('clerk_id', '=', Auth()->user()->id)
-                                        ->where('order_status_id', '>=', 3)
-                                        ->get();
-            else if(Auth()->user()->employee_type_id == 4)
+        if ($request->ajax()) { 
+            if(Auth()->user()->employee_type_id == 2)
                 $data = Shipment::join('orders', 'shipments.order_id', 'orders.id')
                                         ->where('shipper_id', '=', Auth()->user()->id)
                                         ->where('order_status_id', '=', 5)
