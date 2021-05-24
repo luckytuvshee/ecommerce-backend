@@ -99,10 +99,14 @@ $(document).ready(function() {
     });
 
     // Add active state to sidbar nav links
-    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+    var path = window.location.pathname.split("/")[2] || "dashboard";
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-        if (this.href === path) {
+        if (this.pathname.split("/")[2] === path) {
             $(this).addClass("active");
+        } else {
+            if (!this.pathname.split("/")[2] && path === "dashboard") {
+                $(this).addClass("active");
+            }
         }
     });
 

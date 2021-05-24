@@ -10540,6 +10540,7 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
     margin: 0;
+    margin-right: -10px;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
     color: rgba(255, 255, 255, 0.5);
@@ -10621,6 +10622,8 @@ body {
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
     color: #fff;
+    /* background: #333d4b; */
+    background: #2e3d52;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
     color: #fff;

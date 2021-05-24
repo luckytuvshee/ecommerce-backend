@@ -41,7 +41,7 @@
                                 @csrf 
                                 <input type="hidden" name="district_id" id="district_id">
                                 <div class="form-group">
-                                    <label class="mb-2" for="name">Хотын нэр</label>
+                                    <label class="mb-2" for="name">Дүүргийн нэр</label>
                                     <input class="form-control py-4" id="district_name" type="text" name="district_name" required autofocus/>
                                 </div>
                                 <div class="form-group modal-footer">

@@ -37,7 +37,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product_type_id = $product->type->id;
-        $product_brand_id = $product->brand->id;
 
         return DB::table('products')
                     ->select([
@@ -51,10 +50,8 @@ class ProductController extends Controller
                     ])
                     ->join('product_types', 'product_types.id', 'products.product_type_id')
                     ->join('product_type_groups', 'product_type_groups.id', 'product_types.type_group_id')
-                    // ->join('product_brands', 'product_brands.id', 'products.product_brand_id')
                     ->where('product_types.id', '=', $product_type_id)
                     ->where('products.id', '<>', $id)
-                    // ->orWhere('product_brands.id', '=', $product_brand_id)
                     ->take(4)
                     ->get();
     }
